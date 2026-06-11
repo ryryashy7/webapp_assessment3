@@ -12,69 +12,67 @@
 </head>
 <body>
     <header>
-        <h1>📚Study Planner</h1>
+        <h1>Attendance</h1>
         <button id="Installbtn" hidden>Install App</button>
     </header>
   <section class="card dashboard">
-    <h2>Dashboard</h2>
+    <h2>Attendance Dashboard</h2>
     <div class="stats">
-        <div class="stat"><div class="num" id="statSubjects">0</div><div class="label">Subjects</div></div>
-        <div class="stat"><div class='num' id="statTasks">0</div><div class="label">Tasks</div></div>
-        <div class="stat"><div class="num" id="statDueSoon">0</div><div class="label">Due in 7 days</div></div>
+        <div class="stat"><div class="num" id="statSubjects">0</div><div class="label">Days Absent Total</div></div>
+        <div class="stat"><div class='num' id="statTasks">0</div><div class="label">Unexplained Absences</div></div>
+        <div class="stat"><div class="num" id="statDueSoon">0</div><div class="label">Explained Absences</div></div>
         <div class="stat"><div class="num" id="statDonePct">0%</div>
-        <div class="label">Completed</div></div> 
+        <div class="label">Attendance Percentage</div></div> 
     </div>
   </section>
   
   <main>
     <section class="card">
-    <h2>Add Subject</h2>
-    <form id="subjectForm">
-        <label>Subject Name <input id="subjectName" required placeholder="e.g. Software Engineering">
-        </label>
-        <button type="submit">Add Subject</button>
-    </form>
-    <ul id="subjectList"></ul>
-    </section>
-    <section class="card">
-        <h2>Add Task</h2>
+        <h2>Add Absence</h2>
         <form id="taskForm">
             <div class="grid2">
+            <label>
+                Name
+                    <input id="UserAbesence" required placeholder="e.g. John Doe">
+            </label>
                 <label>
-                    Subject
-                    <select id="taskSubject" required></select>
-                </label>
-                <label>
-                    type
+                    Type of Abesence
                     <select id="taskType" required>
-                        <option>Homework</option>
-                        <option>Assessment</option>
-                        <option>Study</option>
+                        <option>Unexplained</option>
+                        <option>Medical Reasons</option>
+                        <option>School Business (Excursion / Incursion)</option>
                     </select>
                 </label>
             </div>
-            <label>
-                Title
-                    <input id="taskTitle" required placeholder="e.g. Read Ch.3">
-            </label>
             <div class="grid2">
                 <label>
-                    Due Date
-                    <input id="taskDue" type="date" required>
+                    Absence Date
+                    <input id="absentDate" type="date" required>
                 </label>
                 <label>
-                    Mark Done Now?
-                    <select id="taskDone">
+                    Proof of Absence
+                    <select id="proof">
                         <option value="false" selected>No</option>
                         <option value="true" selected>Yes</option>
+                    </select>
+                </label>
+                <label>
+                    Year Level
+                    <select id="proof">
+                        <option>Year 12</option>
+                        <option>Year 11</option>
+                        <option>Year 10</option>
+                        <option>Year 9</option>
+                        <option>Year 8</option>
+                        <option>Year 7</option>
                     </select>
                 </label>
             </div>
             <button type="submit">Add Task</button>
         </form>
-        <div class="toolbar">
+        <div class="grid2">
             <label>
-                Filter by Subject
+                Filter by Date
                 <select id="filterSubject"><option value="">All</option></select>
             </label>
         </div>
