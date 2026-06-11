@@ -18,9 +18,9 @@
   <section class="card dashboard">
     <h2>Attendance Dashboard</h2>
     <div class="stats">
-        <div class="stat"><div class="num" id="statSubjects">0</div><div class="label">Days Absent Total</div></div>
-        <div class="stat"><div class='num' id="statTasks">0</div><div class="label">Unexplained Absences</div></div>
-        <div class="stat"><div class="num" id="statDueSoon">0</div><div class="label">Explained Absences</div></div>
+        <div class="stat"><div class="num" id="statTotal">0</div><div class="label">Days Absent Total</div></div>
+        <div class="stat"><div class='num' id="statUnexplained">0</div><div class="label">Unexplained Absences</div></div>
+        <div class="stat"><div class="num" id="statExplained">0</div><div class="label">Explained Absences</div></div>
         <div class="stat"><div class="num" id="statDonePct">0%</div>
         <div class="label">Attendance Percentage</div></div> 
     </div>
@@ -38,9 +38,9 @@
                 <label>
                     Type of Abesence
                     <select id="taskType" required>
-                        <option>Unexplained</option>
-                        <option>Medical Reasons</option>
-                        <option>School Business (Excursion / Incursion)</option>
+                        <option value="Unexplained">Unexplained</option>
+                        <option value="Medical Reasons">Medical Reasons</option>
+                        <option value="School Business">School Business (Excursion / Incursion)</option>
                     </select>
                 </label>
             </div>

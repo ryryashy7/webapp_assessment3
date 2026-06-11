@@ -12,9 +12,9 @@ const taskYear = document.getElementById('yearLevel');
 const taskList = document.getElementById('taskList');
 const installBtn = document.getElementById('installBtn');
 
-const statSubjects = document.getElementById('statSubjects');
-const statTasks = document.getElementById('statTasks');
-const statDueSoon = document.getElementById('statDueSoon');
+const statTotal = document.getElementById('statTotal');
+const statUnexplained = document.getElementById('statUnexplained');
+const statExplained = document.getElementById('statExplained');
 const statDonePct = document.getElementById('statDonePct');
 
 function renderTasks() {
@@ -39,13 +39,13 @@ function renderTasks() {
     .join('');
 
   const total = tasks.length;
-  const unexplained = tasks.filter(t => !t.proof).length;
-  const explained = tasks.filter(t => t.proof).length;
+  const unexplained = tasks.filter(t => t.type === 'Unexplained').length;
+  const explained = tasks.filter(t => t.proof || t.type === 'School Business').length;
   const attendancePct = total ? Math.round(((total - unexplained) / total) * 100) : 0;
 
-  statSubjects.textContent = total;
-  statTasks.textContent = unexplained;
-  statDueSoon.textContent = explained;
+  statTotal.textContent = total;
+  statUnexplained.textContent = unexplained;
+  statExplained.textContent = explained;
   statDonePct.textContent = `${attendancePct}%`;
 }
 
