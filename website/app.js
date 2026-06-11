@@ -1,20 +1,16 @@
 const load = (key, fallback) => JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
 const save = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 
-let subjects = load('subjects', []);
 let tasks    = load('tasks', []);
 
-const subjectForm  = document.getElementById('subjectForm');
-const subjectName  = document.getElementById('subjectName');
-const subjectList  = document.getElementById('subjectList');
+
 const taskForm     = document.getElementById('taskForm');
-const taskSubject  = document.getElementById('taskSubject');
+const taskSubject  = document.getElementById('yearLevel');
 const taskType     = document.getElementById('taskType');
-const taskTitle    = document.getElementById('taskTitle');
-const taskDue      = document.getElementById('taskDue');
-const taskDoneSel  = document.getElementById('taskDone');
+const taskTitle    = document.getElementById('UserAbsence');
+const taskDue      = document.getElementById('absentDate');
+const taskDoneSel  = document.getElementById('proof');
 const taskList     = document.getElementById('taskList');
-const filterSubject= document.getElementById('filterSubject');
 const installBtn   = document.getElementById('installBtn');
 
 const statSubjects = document.getElementById('statSubjects');
