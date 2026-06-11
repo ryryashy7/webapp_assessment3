@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Study Planner (PWA)</title>
+    <link rel="manifest" href="mainfest.webmanifest">
+    <meta name="theme-color" content="#e90eb2">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="192x192" href="/study_planner_pwa/icons/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/study_planner_pwa/icons/icon-512.png">
+</head>
+<body>
+    <header>
+        <h1>📚Study Planner</h1>
+        <button id="Installbtn" hidden>Install App</button>
+    </header>
+  <section class="card dashboard">
+    <h2>Dashboard</h2>
+    <div class="stats">
+        <div class="stat"><div class="num" id="statSubjects">0</div><div class="label">Subjects</div></div>
+        <div class="stat"><div class='num' id="statTasks">0</div><div class="label">Tasks</div></div>
+        <div class="stat"><div class="num" id="statDueSoon">0</div><div class="label">Due in 7 days</div></div>
+        <div class="stat"><div class="num" id="statDonePct">0%</div>
+        <div class="label">Completed</div></div> 
+    </div>
+  </section>
+  
+  <main>
+    <section class="card">
+    <h2>Add Subject</h2>
+    <form id="subjectForm">
+        <label>Subject Name <input id="subjectName" required placeholder="e.g. Software Engineering">
+        </label>
+        <button type="submit">Add Subject</button>
+    </form>
+    <ul id="subjectList"></ul>
+    </section>
+    <section class="card">
+        <h2>Add Task</h2>
+        <form id="taskForm">
+            <div class="grid2">
+                <label>
+                    Subject
+                    <select id="taskSubject" required></select>
+                </label>
+                <label>
+                    type
+                    <select id="taskType" required>
+                        <option>Homework</option>
+                        <option>Assessment</option>
+                        <option>Study</option>
+                    </select>
+                </label>
+            </div>
+            <label>
+                Title
+                    <input id="taskTitle" required placeholder="e.g. Read Ch.3">
+            </label>
+            <div class="grid2">
+                <label>
+                    Due Date
+                    <input id="taskDue" type="date" required>
+                </label>
+                <label>
+                    Mark Done Now?
+                    <select id="taskDone">
+                        <option value="false" selected>No</option>
+                        <option value="true" selected>Yes</option>
+                    </select>
+                </label>
+            </div>
+            <button type="submit">Add Task</button>
+        </form>
+        <div class="toolbar">
+            <label>
+                Filter by Subject
+                <select id="filterSubject"><option value="">All</option></select>
+            </label>
+        </div>
+        <ul id="taskList"></ul>
+    </section>
+  </main>
+  <footer>Offline-ready • Data saved on this device</footer>
+  <script src="app.js" defer></script>
+  <script>
+    if('serviceWorker' in navigator){
+        window.addEventListener('load',()=> navigator.serviceWorker.register('service-worker.js'));
+    }
+  </script>
+</body>
+</html>
