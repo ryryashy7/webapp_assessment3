@@ -3,84 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Attendance App (PWA)</title>
+    <title>Attendance App Login (PWA)</title>
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="theme-color" content="#e90eb2">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" sizes="192x192" href="/study_planner_pwa/icons/icon-192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/study_planner_pwa/icons/icon-512.png">
 </head>
 <body>
     <header>
-        <h1>Attendance</h1>
-        <button id="installBtn" hidden>Install App</button>
+        <h1>Attendance App Login</h1>
     </header>
-  <section class="card dashboard">
-    <h2>Attendance Dashboard</h2>
-    <div class="stats">
-        <div class="stat"><div class="num" id="statTotal">0</div><div class="label">Days Absent Total</div></div>
-        <div class="stat"><div class='num' id="statUnexplained">0</div><div class="label">Unexplained Absences</div></div>
-        <div class="stat"><div class="num" id="statExplained">0</div><div class="label">Explained Absences</div></div>
-        <div class="stat"><div class="num" id="statDonePct">0%</div>
-        <div class="label">Attendance Percentage</div></div> 
-    </div>
-  </section>
-  
-  <main>
-    <section class="card">
-        <h2>Add Absence</h2>
-        <form id="taskForm">
-            <div class="grid2">
-            <label>
-                Name
-                    <input id="UserAbsence" required placeholder="e.g. John Doe">
-            </label>
+    <main>
+        <section class="card">
+            <h2>Login</h2>
+            <form id="loginForm">
                 <label>
-                    Type of Abesence
-                    <select id="taskType" required>
-                        <option value="Unexplained">Unexplained</option>
-                        <option value="Medical Reasons">Medical Reasons</option>
-                        <option value="School Business">School Business (Excursion / Incursion)</option>
-                    </select>
-                </label>
-            </div>
-            <div class="grid2">
-                <label>
-                    Absence Date
-                    <input id="absentDate" type="date" required>
+                    Username
+                    <input id="username" required placeholder="Enter your username">
                 </label>
                 <label>
-                    Proof of Absence
-                    <select id="proof">
-                        <option value="false" selected>No</option>
-                        <option value="true">Yes</option>
-                    </select>
+                    Password
+                    <input id="password" type="password" required placeholder="Enter your password">
                 </label>
-                <label>
-                    Year Level
-                    <select id="yearLevel">
-                        <option>Year 12</option>
-                        <option>Year 11</option>
-                        <option>Year 10</option>
-                        <option>Year 9</option>
-                        <option>Year 8</option>
-                        <option>Year 7</option>
-                    </select>
-                </label>
-            </div>
-            <button type="submit">Add Task</button>
-        </form>
-        <div class="grid2">
-        </div>
-        <ul id="taskList"></ul>
-    </section>
-  </main>
-  <footer>Offline-ready • Data saved on this device</footer>
-  <script src="app.js" defer></script>
-  <script>
-    if('serviceWorker' in navigator){
-        window.addEventListener('load',()=> navigator.serviceWorker.register('service-worker.js'));
-    }
-  </script>
-</body>
-</html>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+    </main>
