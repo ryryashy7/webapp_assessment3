@@ -12,7 +12,7 @@ const taskYear = document.getElementById('yearLevel');
 const taskList = document.getElementById('taskList');
 const installBtn = document.getElementById('installBtn');
 
-const statTotal = document.getElementById('statTotal');
+const statTotal = document.getElementById('statTotal'); // AI help to modify statistics for total, unexplained, explained absences from the original code that was for tasks.
 const statUnexplained = document.getElementById('statUnexplained');
 const statExplained = document.getElementById('statExplained');
 const statDonePct = document.getElementById('statDonePct');
@@ -39,9 +39,10 @@ function renderTasks() {
     .join('');
 
   const total = tasks.length;
+  const total_school = 196; // total days roughly for school
   const unexplained = tasks.filter(t => t.type === 'Unexplained').length;
   const explained = tasks.filter(t => t.proof || t.type === 'School Business').length;
-  const attendancePct = total ? Math.round(((total - unexplained) / total) * 100) : 0;
+  const attendancePct = total_school ? Math.round(((total_school - unexplained) / total_school) * 100) : 0;
 
   statTotal.textContent = total;
   statUnexplained.textContent = unexplained;
