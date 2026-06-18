@@ -1,6 +1,7 @@
 from machine import Pin
 from mfrc522 import MFRC522
 import utime
+import time
 
 # PiicoDev modules
 from PiicoDev_SSD1306 import *
@@ -20,16 +21,19 @@ rgb = PiicoDev_RGB()
 def lookup_tag(tag_number):
     try:
         with open("registered_tags.csv") as f:
-            # Read header and normalise it
             raw_header = f.readline().strip().split(",")
             header = [h.strip().lower().replace(" ", "_") for h in raw_header]
-            # Example becomes: ['tag','first_name','last_name','role']
 
             for line in f:
                 parts = [p.strip() for p in line.strip().split(",")]
                 row = dict(zip(header, parts))
 
                 if row.get("tag") == str(tag_number):
+                    with open("attendance.csv") as af:
+                        date_str = "{:04d}-{:02d}-{:02d}".format(time[0], time[1], time[2])
+                        time_str = "{:02d}:{:02d}:{:02d}".format(time[3], time[4], time[5])
+                        af.write("{},{},{},{},{}\n".format(row.get("tag"), row.get("first_name"), row.get("last_name"), date_str, time_str))
+
                     return row
 
     except Exception as e:
