@@ -3,12 +3,26 @@ from machine import Pin
 from mfrc522 import MFRC522
 import utime 
 import time
+from machine import RTC
 
 # PiicoDev modules
 from PiicoDev_SSD1306 import *
 from PiicoDev_TMP117 import PiicoDev_TMP117
 from PiicoDev_RGB import PiicoDev_RGB
 from PiicoDev_Unified import sleep_ms
+
+# Real Time Clock Setup
+rtc = RTC()
+rtc.datetime((2026, 6, 24, 2, 9, 33, 0, 0))
+# (year, month, day, weekday, hour, minute, second, subseconds)
+
+
+# Timestamp Helper - AI help
+def get_timestamp():
+    dt = rtc.datetime()
+    date_str = "{:04d}-{:02d}-{:02d}".format(dt[0], dt[1], dt[2])
+    time_str = "{:02d}:{:02d}:{:02d}".format(dt[4], dt[5], dt[6])
+    return date_str, time_str
 
 # RFID setup
 reader = MFRC522(spi_id=0, sck=6, miso=4, mosi=7, cs=5, rst=22)
@@ -30,11 +44,11 @@ def lookup_tag(tag_number):
                 row = dict(zip(header, parts))
 
                 if row.get("tag") == str(tag_number):
-                    with open("attendance.csv") as af:
-                        date_str = "{:04d}-{:02d}-{:02d}".format(time[0], time[1], time[2])
-                        time_str = "{:02d}:{:02d}:{:02d}".format(time[3], time[4], time[5])
-                        af.write("{},{},{},{},{}\n".format(row.get("tag"), row.get("first_name"), row.get("last_name"), date_str, time_str))
 
+                    date_str, time_str = get_timestamp() #AI Help
+
+                    with open("attendance.csv", "a") as af:
+                        af.write("{},{},{},{},{}\n".format(row.get("Tag"), row.get("FirstName"), row.get("LastName"), date_str, time_str))
                     return row
 
     except Exception as e:

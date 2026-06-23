@@ -49,7 +49,7 @@ def register():
     print(f"Salt: {salt.hex()}")
     print(f"Hash: {stored_hash.hex()}\n")
 
-    # FIXED: add new account to memory list
+    # FIXED: add new account to memory list - AI
     accounts.append({
         "username": username,
         "salt": salt.hex(),
@@ -89,7 +89,7 @@ def login():
     print(f"Stored Hash:   {account['password_hash']}")
     print(f"Entered Hash:  {entered_hash}")
 
-    # FIXED: compare entered hash to stored hash
+    # FIXED: compare entered hash to stored hash - AI
     if entered_hash == account["password_hash"]:
         print("\nPassword correct!")
         print("Access granted.")
