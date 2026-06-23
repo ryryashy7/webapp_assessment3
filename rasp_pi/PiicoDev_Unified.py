@@ -15,11 +15,11 @@ i2c_err_str = 'PiicoDev could not communicate with module at address 0x{:02X}, c
 setupi2c_str = ', run "sudo curl -L https://piico.dev/i2csetup | bash". Suppress this warning by setting suppress_warnings=True'
 
 if _SYSNAME == 'microbit':
-    from microbit import i2c
-    from utime import sleep_ms
+    from microbit import i2c 
+    from utime import sleep_ms 
     
 elif _SYSNAME == 'Linux':
-    from smbus2 import SMBus, i2c_msg
+    from smbus2 import SMBus, i2c_msg 
     from time import sleep
     from math import ceil
     
@@ -28,8 +28,7 @@ elif _SYSNAME == 'Linux':
 
 else:
     from machine import I2C, Pin
-    from utime import sleep_ms
-
+    from utime import sleep_ms 
 class I2CBase:
     def writeto_mem(self, addr, memaddr, buf, *, addrsize=8):
         raise NotImplementedError('writeto_mem')
@@ -83,7 +82,7 @@ class I2CUnifiedMicroBit(I2CBase):
     def __init__(self, freq=None):
         if freq is not None:
             print('Initialising I2C freq to {}'.format(freq))
-            microbit.i2c.init(freq=freq)
+            microbit.i2c.init(freq=freq) 
             
     def writeto_mem(self, addr, memaddr, buf, *, addrsize=8):
         ad = memaddr.to_bytes(addrsize // 8, 'big')  # pad address for eg. 16 bit

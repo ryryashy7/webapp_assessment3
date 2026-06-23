@@ -1,7 +1,7 @@
 # The code will throw an error / problemm as the imports are for a micropython enviroment but all code works with rasp pi.
-from machine import Pin # pyright: ignore[reportMissingImports]
+from machine import Pin
 from mfrc522 import MFRC522
-import utime # pyright: ignore[reportMissingImports]
+import utime 
 import time
 
 # PiicoDev modules
@@ -18,7 +18,7 @@ oled = create_PiicoDev_SSD1306()
 tempSensor = PiicoDev_TMP117()
 rgb = PiicoDev_RGB()
 
-# CSV LOOKUP FUNCTION 
+# CSV LOOKUP FUNCTION - AI used to fix CSV writing, as previous code was reading correctly but not writing and fixed formating.
 def lookup_tag(tag_number):
     try:
         with open("registered_tags.csv") as f:
@@ -60,7 +60,7 @@ def led_off():
     rgb.show()
 
 
-# OLED SCREENS
+# OLED SCREENS - AI used to fix displaying of CSV.
 def idle_screen():
     temperature = tempSensor.readTempC()
     oled.fill(0)
@@ -68,6 +68,7 @@ def idle_screen():
     oled.text("Temp: {:.1f}C".format(temperature), 0, 20)
     oled.show()
 
+# CSV displaying info to OLED using tag ID.
 def show_scan_result(info):
     oled.fill(0)
 
@@ -80,7 +81,7 @@ def show_scan_result(info):
 
 
 
-# MAIN
+# MAIN - Modified from tutorial code to work with OLED and RGB. https://how2electronics.com/using-rc522-rfid-reader-module-with-raspberry-pi-pico/
 while True:
     idle_screen()
 
