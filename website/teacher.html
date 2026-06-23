@@ -12,16 +12,16 @@
 </head>
 <body>
     <header>
-        <h1>Attendance Dashboard</h1>
+        <h1>Attendance Dashboard (Teacher View)</h1>
         <button id="installBtn" hidden>Install App</button>
-        <button id="teachBtn" onclick="window.location.href='teacher.html'">Teacher Mode</button>
+        <button id="teachBtn" onclick="window.location.href='main.html'">Student View</button>
     </header>
   <section class="card dashboard">
-    <h2>Attendance Dashboard</h2>
+    <h2>Current Attendance for Class</h2>
     <div class="stats">
-        <div class="stat"><div class="num" id="statTotal">0</div><div class="label">Days Absent Total</div></div>
-        <div class="stat"><div class='num' id="statUnexplained">0</div><div class="label">Unexplained Absences</div></div>
-        <div class="stat"><div class="num" id="statExplained">0</div><div class="label">Explained Absences</div></div>
+        <div class="stat"><div class="num" id="statTotal">0</div><div class="label">Total Absences</div></div>
+        <div class="stat"><div class='num' id="statUnexplained">0</div><div class="label">Current Students Signed In</div></div>
+        <div class="stat"><div class="num" id="statExplained">0</div><div class="label">Students Signed Out</div></div>
         <div class="stat"><div class="num" id="statDonePct">0%</div>
         <div class="label">Attendance Percentage</div></div> 
     </div>
