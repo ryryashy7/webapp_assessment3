@@ -1,3 +1,4 @@
+# The code will throw an error / problemm as the imports are for a micropython enviroment but all code works with rasp pi.
 from machine import Pin
 from mfrc522 import MFRC522
 import utime
