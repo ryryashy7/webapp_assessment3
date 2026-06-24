@@ -48,7 +48,7 @@ def lookup_tag(tag_number):
                     date_str, time_str = get_timestamp() #AI Help
 
                     with open("attendance.csv", "a") as af:
-                        af.write("{},{},{},{},{}\n".format(row.get("Tag"), row.get("FirstName"), row.get("LastName"), date_str, time_str))
+                        af.write("{},{},{},{},{}\n".format(row.get("tag"), row.get("FirstName"), row.get("LastName"), date_str, time_str))
                     return row
 
     except Exception as e:
